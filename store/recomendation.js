@@ -4,7 +4,7 @@ export const state = () => ({
       id: 1,
       question: 'How many people are there in your household?',
       type: 1,
-      value: 1,
+      value: null,
       countFamily: {
         min: 3,
         value: 50
@@ -42,13 +42,13 @@ export const state = () => ({
       options: [
         {
           text: 'I want people to notice me! ',
-          value: 0,
+          value: 1,
           countFamily: 0,
           countSport: 50
         },
         {
           text: "I'm happy to blend in!",
-          value: 1,
+          value: 2,
           countFamily: 50,
           countSport: 0
         }
@@ -56,7 +56,8 @@ export const state = () => ({
     }
   ],
   countSport: 0,
-  countFamily: 0
+  countFamily: 0,
+  finished: false
 })
 
 export const mutations = {
@@ -117,10 +118,15 @@ export const mutations = {
     state.countFamily = countFamily
     state.countSport = countSport
   },
-  remove(state, { todo }) {
-    state.list.splice(state.list.indexOf(todo), 1)
+  finish(state) {
+    debugger
+    state.finished = true
   },
-  toggle(state, todo) {
-    todo.done = !todo.done
+  reset(state) {
+    debugger
+    state.questions.forEach((element) => {
+      element.value = null
+    })
+    state.finished = false
   }
 }

@@ -5,15 +5,22 @@
     {{ question.question }}
 
     <div v-if="question.type == 1">
-      <input type="number" min="0" v-model="questionAnswer" />
+      <input v-model="questionAnswer" type="number" min="0" />
     </div>
     <div v-if="question.type == 2">
       <div v-if="question.options.length <= 6">
-        <input type="radio" id="1" value="1" v-model="questionAnswer" />
-        <label for="1">Speed</label>
-
-        <input type="radio" id="2" value="2" v-model="questionAnswer" />
-        <label for="2">Comfort</label>
+        <template v-for="option in question.options">
+          <input
+            id="1"
+            v-bind:key="option.value"
+            type="radio"
+            v-bind:value="option.value"
+            v-model="questionAnswer"
+          />
+          <label v-bind:key="option.value" v-bind:value="option.value">
+            {{ option.text }}
+          </label>
+        </template>
       </div>
       <div v-else>
         <!-- select -->
@@ -37,18 +44,18 @@
       >
         Next
       </button>
-      <button type="button" @click="$refs.stepper.reset()">Reset</button>
-      <button
-        v-if="$refs.stepper.value == 3"
-        type="button"
-        @click="$refs.stepper.reset()"
-      >
+      <button type="button" @click="$refs.stepper.reset() && reset()">
+        Reset
+      </button>
+      <button v-if="$refs.stepper.value == 3" type="button" @click="finish()">
         Finish
       </button>
     </div>
     countSport: {{ countSport }}
     <br />
     countFamily: {{ countFamily }}
+    <br />
+    finished: {{ finished }}
   </div>
 </template>
 
@@ -69,7 +76,10 @@ export default Vue.extend({
   components: {
     VStepper
   },
-  data: () => ({ index: 1 }),
+  data: () => ({
+    index: 1,
+    finished: false
+  }),
   computed: {
     questions() {
       return this.$store.state.recomendation.questions
@@ -83,6 +93,9 @@ export default Vue.extend({
       },
       countFamily: (state) => {
         return state.recomendation.countFamily
+      },
+      finished: (state) => {
+        return state.recomendation.finished
       }
     }),
     questionAnswer: {
@@ -98,12 +111,9 @@ export default Vue.extend({
     }
   },
   methods: {
-    addTodo(e) {
-      this.$store.commit('recomendation/add', e.target.value)
-      e.target.value = ''
-    },
     ...mapMutations({
-      toggle: 'recomendation/toggle'
+      finish: 'recomendation/finish',
+      reset: 'recomendation/reset'
     })
   }
 })
