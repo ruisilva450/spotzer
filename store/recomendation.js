@@ -57,7 +57,7 @@ export const state = () => ({
   ],
   countSport: 0,
   countFamily: 0,
-  finished: false
+  submitted: false
 })
 
 export const mutations = {
@@ -118,15 +118,14 @@ export const mutations = {
     state.countFamily = countFamily
     state.countSport = countSport
   },
-  finish(state) {
-    debugger
-    state.finished = true
+  submit(state) {
+    state.submitted = true
   },
   reset(state) {
     debugger
     state.questions.forEach((element) => {
       element.value = null
     })
-    state.finished = false
+    state.submitted = false
   }
 }

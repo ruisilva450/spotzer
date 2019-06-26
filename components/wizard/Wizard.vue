@@ -9,18 +9,18 @@
     </div>
     <div v-if="question.type == 2">
       <div v-if="question.options.length <= 6">
-        <template v-for="option in question.options">
+        <div v-for="option in question.options" v-bind:key="option.value">
           <input
             id="1"
-            v-bind:key="option.value"
             type="radio"
             v-bind:value="option.value"
             v-model="questionAnswer"
           />
-          <label v-bind:key="option.value" v-bind:value="option.value">
+          <label v-bind:value="option.value">
             {{ option.text }}
           </label>
-        </template>
+          <br />
+        </div>
       </div>
       <div v-else>
         <!-- select -->
@@ -44,18 +44,24 @@
       >
         Next
       </button>
-      <button type="button" @click="$refs.stepper.reset() && reset()">
+      <button
+        type="button"
+        @click="
+          $refs.stepper.reset()
+          reset()
+        "
+      >
         Reset
       </button>
-      <button v-if="$refs.stepper.value == 3" type="button" @click="finish()">
+      <button v-if="$refs.stepper.value == 3" type="button" @click="submit()">
         Finish
       </button>
     </div>
+    finished: {{ submitted }}
+    <br />
     countSport: {{ countSport }}
     <br />
     countFamily: {{ countFamily }}
-    <br />
-    finished: {{ finished }}
   </div>
 </template>
 
@@ -77,8 +83,7 @@ export default Vue.extend({
     VStepper
   },
   data: () => ({
-    index: 1,
-    finished: false
+    index: 1
   }),
   computed: {
     questions() {
@@ -94,8 +99,8 @@ export default Vue.extend({
       countFamily: (state) => {
         return state.recomendation.countFamily
       },
-      finished: (state) => {
-        return state.recomendation.finished
+      submitted: (state) => {
+        return state.recomendation.submitted
       }
     }),
     questionAnswer: {
@@ -112,7 +117,7 @@ export default Vue.extend({
   },
   methods: {
     ...mapMutations({
-      finish: 'recomendation/finish',
+      submit: 'recomendation/submit',
       reset: 'recomendation/reset'
     })
   }

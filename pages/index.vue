@@ -2,24 +2,14 @@
   <div class="container">
     <div>
       <logo />
-      <wizard />
       <h1 class="title">
         spotzer-x
       </h1>
       <h2 class="subtitle">
         Front End Dev Assigment for Spotzer
       </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+      <div>
+        <wizard />
       </div>
     </div>
   </div>
@@ -27,7 +17,7 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
-import Wizard from '~/components/Wizard.vue'
+import Wizard from '~/components/wizard/Wizard.vue'
 
 export default {
   components: {
