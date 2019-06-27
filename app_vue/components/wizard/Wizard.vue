@@ -4,6 +4,10 @@
 
     {{ question.question }}
 
+    <!-- <div class="columns">
+      <div class="column is-one-fifth">
+      </div>
+    </div> -->
     <Question v-bind:question="question" />
 
     <!-- Stepper Controls -->
