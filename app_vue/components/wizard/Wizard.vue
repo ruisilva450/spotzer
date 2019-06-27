@@ -4,28 +4,7 @@
 
     {{ question.question }}
 
-    <div v-if="question.type == 1">
-      <input v-model="questionAnswer" type="number" min="0" />
-    </div>
-    <div v-if="question.type == 2">
-      <div v-if="question.options.length <= 6">
-        <div v-for="option in question.options" v-bind:key="option.value">
-          <input
-            id="1"
-            type="radio"
-            v-bind:value="option.value"
-            v-model="questionAnswer"
-          />
-          <label v-bind:value="option.value">
-            {{ option.text }}
-          </label>
-          <br />
-        </div>
-      </div>
-      <div v-else>
-        <!-- select -->
-      </div>
-    </div>
+    <Question v-bind:question="question" />
 
     <!-- Stepper Controls -->
     <div v-if="$refs.stepper">
@@ -66,21 +45,15 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import { VStepper } from 'vue-stepper-component'
 import { mapMutations, mapState } from 'vuex'
 
-// State
-// const state = { steps: 3, step: undefined }
-
-// Getters...
-// Mutations...
-
-// Export
-
-import { VStepper } from 'vue-stepper-component'
-import Vue from 'vue'
+import Question from '~/components/wizard/Question.vue'
 export default Vue.extend({
   components: {
-    VStepper
+    VStepper,
+    Question
   },
   data: () => ({
     index: 1

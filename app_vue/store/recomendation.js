@@ -80,29 +80,35 @@ export const mutations = {
               if (element.countFamily) {
                 if (
                   element.countFamily.min &&
-                  element.countFamily.min <= value
+                  element.countFamily.min <= element.value
                 ) {
                   countFamily += element.countFamily.value
                 }
                 if (
                   element.countFamily.max &&
-                  element.countFamily.max >= value
+                  element.countFamily.max >= element.value
                 ) {
                   countFamily += element.countFamily.value
                 }
               }
               if (element.countSport) {
-                if (element.countSport.min && element.countSport.min <= value) {
+                if (
+                  element.countSport.min &&
+                  element.countSport.min <= element.value
+                ) {
                   countSport += element.countSport.value
                 }
-                if (element.countSport.max && element.countSport.max >= value) {
+                if (
+                  element.countSport.max &&
+                  element.countSport.max >= element.value
+                ) {
                   countSport += element.countSport.value
                 }
               }
               break
             case 2:
               const foundOption = element.options.find((o) => {
-                return o.value === value
+                return o.value === element.value
               })
 
               countFamily += foundOption.countFamily
@@ -126,6 +132,8 @@ export const mutations = {
     state.questions.forEach((element) => {
       element.value = null
     })
+    state.countFamily = 0
+    state.countSport = 0
     state.submitted = false
   }
 }

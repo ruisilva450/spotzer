@@ -5,6 +5,9 @@
 ## Build Setup
 
 ``` bash
+# open app_vue folder
+$ cd app_vue
+
 # install dependencies
 $ yarn install
 
@@ -20,3 +23,22 @@ $ yarn generate
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+
+## Some Remarks
+
+This project uses separation of concerns when it comes to the folder organization of components.
+
+![components organization](/docs/components.png)
+
+- components
+    - recomendation
+        - list
+            - List.vue
+            - Detail.vue
+        - Resume.vue
+    - ui
+        - TheFooter.vue
+        - TheHeader.vue
+    - wizard
+        - Wizard.vue
+        - Question.vue
