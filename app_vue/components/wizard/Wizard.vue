@@ -8,14 +8,20 @@
       </div>
     </section>
 
-    <div v-if="$refs.stepper" class="columns">
-      <div class="column is-one-fifth">
+    <div class="columns is-vcentered">
+      <div class="column is-one-fifth" v-if="$refs.stepper">
         <button
           v-if="$refs.stepper.value > 1"
           type="button"
           @click="$refs.stepper.previous()"
         >
           Previous
+          <span class="icon is-medium">
+            <span class="fa-stack">
+              <i class="fas fa-circle fa-stack-2x"></i>
+              <i class="fas fa-flag fa-stack-1x fa-inverse"></i>
+            </span>
+          </span>
         </button>
       </div>
 
@@ -25,7 +31,7 @@
         </section>
       </div>
 
-      <div class="column is-one-fifth">
+      <div class="column is-one-fifth" v-if="$refs.stepper">
         <button
           v-if="$refs.stepper.value < 3"
           type="button"
@@ -39,36 +45,6 @@
       </div>
     </div>
 
-    <!-- Stepper Controls -->
-    <!-- <div v-if="$refs.stepper">
-      <button
-        v-if="$refs.stepper.value > 1"
-        type="button"
-        @click="$refs.stepper.previous()"
-      >
-        Previous
-      </button>
-
-      <button
-        v-if="$refs.stepper.value < 3"
-        type="button"
-        @click="$refs.stepper.next()"
-      >
-        Next
-      </button>
-      <button
-        type="button"
-        @click="
-          $refs.stepper.reset()
-          reset()
-        "
-      >
-        Reset
-      </button>
-      <button v-if="$refs.stepper.value == 3" type="button" @click="submit()">
-        Finish
-      </button>
-    </div> -->
     finished: {{ submitted }}
     <br />
     countSport: {{ countSport }}
