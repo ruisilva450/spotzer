@@ -1,10 +1,9 @@
 <template>
-  <section class="hero is-medium is-primary is-bold">
+  <section class="hero is-primary is-bold">
     <div class="hero-body">
-      <div class="container">
-        <h1 class="title">Primary bold title</h1>
-        <h2 class="subtitle">Primary bold subtitle</h2>
-
+      <div class="container has-text-centered">
+        <h1 class="title">Car's Company X</h1>
+        <h2 class="subtitle">Let us know you better</h2>
         <wizard />
       </div>
     </div>

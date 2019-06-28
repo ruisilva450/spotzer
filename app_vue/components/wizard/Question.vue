@@ -27,7 +27,6 @@
 export default {
   props: {
     question: {
-      type: String,
       required: true
     }
   },

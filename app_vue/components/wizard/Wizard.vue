@@ -2,16 +2,45 @@
   <div>
     <v-stepper ref="stepper" v-model="index" :steps="questions.length" />
 
-    {{ question.question }}
-
-    <!-- <div class="columns">
-      <div class="column is-one-fifth">
+    <section class="section">
+      <div class="container">
+        {{ question.question }}
       </div>
-    </div> -->
-    <Question v-bind:question="question" />
+    </section>
+
+    <div v-if="$refs.stepper" class="columns">
+      <div class="column is-one-fifth">
+        <button
+          v-if="$refs.stepper.value > 1"
+          type="button"
+          @click="$refs.stepper.previous()"
+        >
+          Previous
+        </button>
+      </div>
+
+      <div class="column">
+        <section class="section">
+          <Question v-bind:question="question" />
+        </section>
+      </div>
+
+      <div class="column is-one-fifth">
+        <button
+          v-if="$refs.stepper.value < 3"
+          type="button"
+          @click="$refs.stepper.next()"
+        >
+          Next
+        </button>
+        <button v-if="$refs.stepper.value == 3" type="button" @click="submit()">
+          Finish
+        </button>
+      </div>
+    </div>
 
     <!-- Stepper Controls -->
-    <div v-if="$refs.stepper">
+    <!-- <div v-if="$refs.stepper">
       <button
         v-if="$refs.stepper.value > 1"
         type="button"
@@ -39,7 +68,7 @@
       <button v-if="$refs.stepper.value == 3" type="button" @click="submit()">
         Finish
       </button>
-    </div>
+    </div> -->
     finished: {{ submitted }}
     <br />
     countSport: {{ countSport }}

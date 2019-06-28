@@ -57,3 +57,7 @@ This project uses separation of concerns when it comes to the folder organizatio
     - wizard
         - Wizard.vue
         - Question.vue
+
+Techonology used:
+- https://buefy.org/documentation/layout
+- https://nuxtjs.org
