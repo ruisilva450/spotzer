@@ -26,6 +26,21 @@ For detailed explanation on how things work, checkout [Nuxt.js docs](https://nux
 
 ## Some Remarks
 
+My self organization cares for:
+
+- Brainstorming on domain of the issue (use cases, etc)
+- UX
+- UI
+    - Components
+    - Styling
+- Analysis
+- Tests
+- Implementation
+    - Store (Vuex)
+    - Logic
+    - Components
+    - Styling
+
 This project uses separation of concerns when it comes to the folder organization of components.
 
 ![components organization](/docs/components.png)
