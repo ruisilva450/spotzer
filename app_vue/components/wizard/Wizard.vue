@@ -4,25 +4,21 @@
 
     <section class="section">
       <div class="container">
-        {{ question.question }}
+        <div class="subtitle has-text-weight-semibold">
+          {{ question.question }}
+        </div>
       </div>
     </section>
 
-    <div class="columns is-vcentered">
-      <div class="column is-one-fifth" v-if="$refs.stepper">
-        <button
-          v-if="$refs.stepper.value > 1"
-          type="button"
+    <div class="columns is-vcentered is-mobile">
+      <div class="column is-one-fifth">
+        <b-button
+          rounded
+          icon-left="chevron-left"
+          size="is-large"
+          v-if="index > 1"
           @click="$refs.stepper.previous()"
-        >
-          Previous
-          <span class="icon is-medium">
-            <span class="fa-stack">
-              <i class="fas fa-circle fa-stack-2x"></i>
-              <i class="fas fa-flag fa-stack-1x fa-inverse"></i>
-            </span>
-          </span>
-        </button>
+        ></b-button>
       </div>
 
       <div class="column">
@@ -31,17 +27,23 @@
         </section>
       </div>
 
-      <div class="column is-one-fifth" v-if="$refs.stepper">
-        <button
-          v-if="$refs.stepper.value < 3"
-          type="button"
+      <div class="column is-one-fifth">
+        <b-button
+          rounded
+          icon-right="chevron-right"
+          size="is-large"
+          v-if="index < 3"
           @click="$refs.stepper.next()"
+        ></b-button>
+        <b-button
+          rounded
+          icon-right="check"
+          size="is-large"
+          v-if="index == 3"
+          @click="submit()"
         >
-          Next
-        </button>
-        <button v-if="$refs.stepper.value == 3" type="button" @click="submit()">
           Finish
-        </button>
+        </b-button>
       </div>
     </div>
 

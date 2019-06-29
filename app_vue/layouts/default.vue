@@ -6,7 +6,11 @@
 </template>
 
 <script>
+import { dom } from '@fortawesome/fontawesome-svg-core'
 import TheFooter from '~/components/ui/TheFooter.vue'
+
+dom.watch() // This will kick of the initial replacement of i to svg tags and configure a MutationObserver
+
 export default {
   components: {
     TheFooter
