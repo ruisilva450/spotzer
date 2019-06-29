@@ -4,7 +4,7 @@ export const state = () => ({
       id: 1,
       question: 'How many people are there in your household?',
       type: 1,
-      value: null,
+      value: 1,
       countFamily: {
         min: 3,
         value: 50

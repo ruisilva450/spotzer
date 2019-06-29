@@ -53,7 +53,6 @@ export default Vue.extend({
       switch (mutation.type) {
         case 'recomendation/submit':
           if (state.recomendation.submitted) {
-            debugger
             document.querySelector('#resume').scrollIntoView({
               behavior: 'smooth'
             })

@@ -5,7 +5,7 @@
         <div
           v-for="vehicle in vehicles"
           v-bind:key="vehicle.id"
-          class="columns"
+          class="columns card"
         >
           <div class="column is-full">
             <Detail v-bind:vehicle="vehicle" />
@@ -21,7 +21,7 @@ import Vue from 'vue'
 import Detail from '~/components/recomendation/list/Detail.vue'
 
 export default Vue.extend({
-  modules: {
+  components: {
     Detail
   },
   data() {
@@ -30,12 +30,14 @@ export default Vue.extend({
         {
           id: 1,
           image: 'https://loremflickr.com/320/240/suv,familycar?random=1',
+          type: 'sport',
           year: 2013,
           mileage: 63000
         },
         {
           id: 2,
           image: 'https://loremflickr.com/320/240/suv,familycar?random=1',
+          type: 'family',
           year: 2013,
           mileage: 63000
         }
