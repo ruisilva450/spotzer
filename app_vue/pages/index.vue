@@ -1,17 +1,21 @@
 <template>
   <div>
     <TheHeader />
-    <!-- <Resume />
-    <List /> -->
+    <Resume />
+    <List />
   </div>
 </template>
 
 <script>
 import TheHeader from '~/components/ui/TheHeader.vue'
+import Resume from '~/components/recomendation/Resume.vue'
+import List from '~/components/recomendation/list/List.vue'
 
 export default {
   components: {
-    TheHeader
+    TheHeader,
+    Resume,
+    List
   }
 }
 </script>

@@ -57,6 +57,7 @@ export const state = () => ({
   ],
   countSport: 0,
   countFamily: 0,
+  allAnswered: false,
   submitted: false
 })
 
@@ -70,6 +71,7 @@ export const mutations = {
 
     let countFamily = 0
     let countSport = 0
+    let allAnswered = true
 
     for (const q in state.questions) {
       if (state.questions.hasOwnProperty(q)) {
@@ -117,18 +119,22 @@ export const mutations = {
             default:
               break
           }
+        } else {
+          allAnswered = false
         }
       }
     }
 
     state.countFamily = countFamily
     state.countSport = countSport
+    state.allAnswered = allAnswered
   },
   submit(state) {
-    state.submitted = true
+    if (state.allAnswered) {
+      state.submitted = true
+    }
   },
   reset(state) {
-    debugger
     state.questions.forEach((element) => {
       element.value = null
     })

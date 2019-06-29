@@ -40,6 +40,7 @@
           icon-right="check"
           size="is-large"
           v-if="index == 3"
+          :disabled="!allAnswered"
           @click="submit()"
         >
           Finish
@@ -47,11 +48,13 @@
       </div>
     </div>
 
-    finished: {{ submitted }}
-    <br />
-    countSport: {{ countSport }}
-    <br />
-    countFamily: {{ countFamily }}
+    <div class="columns is-centered">
+      <div class="column">
+        <b-button rounded size="is-large" @click="reset()">
+          Reset
+        </b-button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -82,6 +85,9 @@ export default Vue.extend({
       },
       countFamily: (state) => {
         return state.recomendation.countFamily
+      },
+      allAnswered: (state) => {
+        return state.recomendation.allAnswered
       },
       submitted: (state) => {
         return state.recomendation.submitted
