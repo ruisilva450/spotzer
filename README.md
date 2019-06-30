@@ -61,3 +61,9 @@ This project uses separation of concerns when it comes to the folder organizatio
 Techonology used:
 - https://buefy.org/documentation/layout
 - https://nuxtjs.org
+
+TODO:
+- Unit test
+- Server api with questions data
+- Server api with vehicles data
+- Multi-language support (i18n)
