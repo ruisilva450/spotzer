@@ -1,3 +1,6 @@
+import { RepositoryFactory } from './../services/repositoryFactory'
+const QuestionsRepository = RepositoryFactory.get('questions')
+
 export const state = () => ({
   questions: [
     {
@@ -61,7 +64,17 @@ export const state = () => ({
   submitted: false
 })
 
+export const actions = {
+  getQuestions({ commit }) {
+    QuestionsRepository.get().then((questions) =>
+      commit(updateQuestions, questions))
+  }
+}
+
 export const mutations = {
+  updateQuestions(state, payload) {
+    state.question = payload
+  },
   answer(state, { question, value }) {
     const foundQuestion = state.questions.find((q) => {
       return q.id === question.id

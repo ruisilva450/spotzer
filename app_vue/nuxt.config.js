@@ -16,7 +16,7 @@ module.exports = {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-  serverMiddleware: [{ path: '/api', handler: '~/server/index.js' }],
+  serverMiddleware: ['~/server/api.js'],
   /*
    ** Customize the progress-bar color
    */

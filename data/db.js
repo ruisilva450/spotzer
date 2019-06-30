@@ -18,7 +18,7 @@ module.exports = () => {
             },
             {
                 id: 2,
-                question: 'How many people are there in your household?',
+                question: 'Do you prefer speed or comfort?',
                 type: 2,
                 value: null,
                 options: [
@@ -38,7 +38,7 @@ module.exports = () => {
             },
             {
                 id: 3,
-                question: 'How many people are there in your household?',
+                question: 'How important is the look of a car to you?',
                 type: 2,
                 value: null,
                 options: [
@@ -58,7 +58,7 @@ module.exports = () => {
             }
         ],
         vehicles: []
-    }
+    };
 
     // Create 1000 users
     for (let i = 0; i < 500; i++) {
