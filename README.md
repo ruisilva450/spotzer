@@ -4,6 +4,7 @@
 
 ## Build Setup
 
+### Frontend + Backend (part 1)
 ``` bash
 # open app_vue folder
 $ cd app_vue
@@ -23,6 +24,19 @@ $ yarn generate
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+
+### Backend (part 2)
+``` bash
+# install json-server
+$ npm install -g json-server
+
+# open data folder
+$ cd data
+
+# build and start db server
+$ json-server db.js
+```
+For detailed explanation on how things work, checkout [JSON Server](https://github.com/typicode/json-server).
 
 ## Some Remarks
 
