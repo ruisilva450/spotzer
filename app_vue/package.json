@@ -24,6 +24,7 @@
     "express": "^4.16.4",
     "nuxt": "^2.0.0",
     "nuxt-buefy": "^0.3.8",
+    "request": "^2.88.0",
     "vue-stepper-component": "^1.0.0"
   },
   "devDependencies": {

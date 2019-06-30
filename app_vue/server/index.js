@@ -5,6 +5,10 @@ const app = express()
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
+
+// Import custom helpers
+const apiHelper = require('./apiHelper')
+
 config.dev = !(process.env.NODE_ENV === 'production')
 
 async function start() {
@@ -24,6 +28,21 @@ async function start() {
   // Give nuxt middleware to express
   app.use(nuxt.render)
 
+  app.get('/', (req, res, next) => {
+    res.send('API root')
+  })
+
+  app.get('/api/questions', (req, res) => {
+    apiHelper
+      .make_API_call('//localhost:3001/questions')
+      .then((response) => {
+        res.json(response)
+      })
+      .catch((error) => {
+        res.send(error)
+      })
+  })
+
   // Listen the server
   app.listen(port, host)
   consola.ready({
@@ -32,3 +51,8 @@ async function start() {
   })
 }
 start()
+
+module.exports = {
+  path: '/server',
+  handler: app
+}
