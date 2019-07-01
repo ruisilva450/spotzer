@@ -26,6 +26,7 @@ $ yarn generate
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
 
 ### Backend (part 2) - Data
+#### On a second terminal
 ``` bash
 # install json-server
 $ npm install -g json-server
