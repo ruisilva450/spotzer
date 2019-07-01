@@ -25,7 +25,7 @@ $ yarn generate
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
 
-### Backend (part 2)
+### Backend (part 2) - Data
 ``` bash
 # install json-server
 $ npm install -g json-server
@@ -43,7 +43,7 @@ For detailed explanation on how things work, checkout [JSON Server](https://gith
 
 ## Some Remarks
 
-My self organization cares for:
+My usual self organization methology cares for:
 
 - Brainstorming on domain of the issue (use cases, etc)
 - UX
@@ -78,9 +78,10 @@ This project uses separation of concerns when it comes to the folder organizatio
 Techonology used:
 - https://buefy.org/documentation/layout
 - https://nuxtjs.org
+- https://github.com/typicode/json-server
 
 TODO:
-- Unit test
-- Server api with questions data
-- Server api with vehicles data
+- More complete unit test cases
 - Multi-language support (i18n)
+
+I made some more steps than necessary to showcase a trickier challenge on the project organization and to apply some patterns that help ensure the scalability.
