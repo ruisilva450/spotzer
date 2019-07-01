@@ -1,6 +1,6 @@
 # spotzer-x
 
-> Front End Dev Assigment for Spotzer
+> Front End Dev Assignment for Spotzer
 
 ## Build Setup
 
@@ -59,20 +59,20 @@ This project uses separation of concerns when it comes to the folder organizatio
 
 ![components organization](/docs/components.png)
 
-- components
-    - recomendation
-        - list
+- /components
+    - /recommendation
+        - /list
             - List.vue
             - Detail.vue
         - Resume.vue
-    - ui
+    - /ui
         - TheFooter.vue
         - TheHeader.vue
-    - wizard
+    - /wizard
         - Wizard.vue
         - Question.vue
 
-Techonology used:
+Technology used:
 - https://buefy.org/documentation/layout
 - https://nuxtjs.org
 
