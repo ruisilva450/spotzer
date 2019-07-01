@@ -2,11 +2,15 @@
   <b-collapse id="resume" :open="submitted" aria-id="contentIdForA11y1">
     <div class="notification">
       <div class="content">
-        vehicleType: {{ vehicleType }}
-
         <section class="section">
           <div class="columns is-centered">
             <div class="column is-half">
+              <div class="subtitle" v-if="vehicleType == 'sport'">
+                Here are some nice rides for you:
+              </div>
+              <div class="subtitle" v-if="vehicleType == 'family'">
+                Here are some nice family picks for you:
+              </div>
               <div
                 v-for="vehicle in vehicles"
                 v-bind:key="vehicle.id"
@@ -33,26 +37,6 @@ import Detail from '~/components/recomendation/list/Detail.vue'
 export default Vue.extend({
   components: {
     Detail
-  },
-  data() {
-    return {
-      vehicles: [
-        {
-          id: 1,
-          image: 'https://loremflickr.com/320/240/suv,familycar?random=1',
-          type: 'sport',
-          year: 2013,
-          mileage: 63000
-        },
-        {
-          id: 2,
-          image: 'https://loremflickr.com/320/240/suv,familycar?random=1',
-          type: 'family',
-          year: 2013,
-          mileage: 63000
-        }
-      ]
-    }
   },
   computed: {
     vehicleType() {
@@ -86,8 +70,7 @@ export default Vue.extend({
   },
   methods: {
     loadAsyncData() {
-      debugger
-      if (this.vehicleType) {
+      if (this.vehicleType && this.submitted) {
         this.$store.dispatch('recomendation/getVehicles', this.vehicleType)
       }
     }

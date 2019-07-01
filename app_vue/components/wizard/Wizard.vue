@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-loading :is-full-page="true" :active="questions.length == 0"></b-loading>
+    <b-loading :is-full-page="false" :active="questions.length == 0"></b-loading>
     <div v-if="questions.length > 0">
       <v-stepper ref="stepper" v-model="index" :steps="questions.length" />
 

@@ -1,7 +1,7 @@
 <template>
   <div class="columns">
     <div class="column is-one-quarter">
-      <img :src="'https://loremflickr.com/320/240/' + carType" alt="" />
+      <img :src="vehicle.image" alt="car image" />
     </div>
     <div class="column">
       Year: {{ vehicle.year }}
