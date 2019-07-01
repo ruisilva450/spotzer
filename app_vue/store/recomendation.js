@@ -1,63 +1,10 @@
 import { RepositoryFactory } from './../services/repositoryFactory'
 const QuestionsRepository = RepositoryFactory.get('questions')
+const VehiclesRepository = RepositoryFactory.get('vehicles')
 
 export const state = () => ({
-  questions: [
-    {
-      id: 1,
-      question: 'How many people are there in your household?',
-      type: 1,
-      value: 1,
-      countFamily: {
-        min: 3,
-        value: 50
-      },
-      countSport: {
-        max: 2,
-        value: 50
-      }
-    },
-    {
-      id: 2,
-      question: 'How many people are there in your household?',
-      type: 2,
-      value: null,
-      options: [
-        {
-          text: 'Speed',
-          value: 1,
-          countFamily: 0,
-          countSport: 50
-        },
-        {
-          text: 'Comfort',
-          value: 2,
-          countFamily: 50,
-          countSport: 0
-        }
-      ]
-    },
-    {
-      id: 3,
-      question: 'How many people are there in your household?',
-      type: 2,
-      value: null,
-      options: [
-        {
-          text: 'I want people to notice me! ',
-          value: 1,
-          countFamily: 0,
-          countSport: 50
-        },
-        {
-          text: "I'm happy to blend in!",
-          value: 2,
-          countFamily: 50,
-          countSport: 0
-        }
-      ]
-    }
-  ],
+  questions: [],
+  vehicles: [],
   countSport: 0,
   countFamily: 0,
   allAnswered: false,
@@ -66,14 +13,27 @@ export const state = () => ({
 
 export const actions = {
   getQuestions({ commit }) {
+    /* eslint arrow-parens: ["error", "always"] */
     QuestionsRepository.get().then((questions) =>
-      commit(updateQuestions, questions))
+      commit('updateQuestions', questions.data)
+    )
+  },
+  getVehicles({ commit }, type) {
+    debugger
+    /* eslint arrow-parens: ["error", "always"] */
+    VehiclesRepository.get(type).then((vehicles) =>
+      commit('updateVehicles', vehicles.data)
+    )
   }
 }
 
 export const mutations = {
   updateQuestions(state, payload) {
-    state.question = payload
+    state.questions = payload
+  },
+  updateVehicles(state, payload) {
+    debugger
+    state.vehicles = payload
   },
   answer(state, { question, value }) {
     const foundQuestion = state.questions.find((q) => {

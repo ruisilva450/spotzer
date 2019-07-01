@@ -2,6 +2,8 @@
   <b-collapse id="resume" :open="submitted" aria-id="contentIdForA11y1">
     <div class="notification">
       <div class="content">
+        vehicleType: {{ vehicleType }}
+
         <section class="section">
           <div class="columns is-centered">
             <div class="column is-half">
@@ -25,6 +27,7 @@
 <script>
 import Vue from 'vue'
 import { mapState } from 'vuex'
+import debounce from 'lodash.debounce'
 import Detail from '~/components/recomendation/list/Detail.vue'
 
 export default Vue.extend({
@@ -52,6 +55,17 @@ export default Vue.extend({
     }
   },
   computed: {
+    vehicleType() {
+      if (this.countSport === this.countFamily) {
+        return null
+      }
+
+      if (this.submitted) {
+        this.debouncedGetVehicles()
+      }
+
+      return this.countSport < this.countFamily ? 'family' : 'sport'
+    },
     ...mapState({
       countSport: (state) => {
         return state.recomendation.countSport
@@ -61,22 +75,35 @@ export default Vue.extend({
       },
       submitted: (state) => {
         return state.recomendation.submitted
+      },
+      vehicles: (state) => {
+        return state.recomendation.vehicles
       }
     })
   },
+  created() {
+    this.debouncedGetVehicles = debounce(this.loadAsyncData, 100)
+  },
   methods: {
     loadAsyncData() {
-      const carType =
-        this.$state.store.recomendation.countFamily <
-        this.$state.store.recomendation.countSports
-          ? 'sports'
-          : 'family'
-      // this.$http.get('')
-      // TODO: load data from server
-      if (carType) {
-        return true
+      debugger
+      if (this.vehicleType) {
+        this.$store.dispatch('recomendation/getVehicles', this.vehicleType)
       }
     }
+  },
+  mounted() {
+    this.$store.subscribe((mutation, state) => {
+      switch (mutation.type) {
+        case 'recomendation/submit':
+          if (state.recomendation.submitted) {
+            document.querySelector('#resume').scrollIntoView({
+              behavior: 'smooth'
+            })
+          }
+          break
+      }
+    })
   }
 })
 </script>

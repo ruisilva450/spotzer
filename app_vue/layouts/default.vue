@@ -14,6 +14,10 @@ dom.watch() // This will kick of the initial replacement of i to svg tags and co
 export default {
   components: {
     TheFooter
+  },
+  created() {
+    // initialize store data structure by submitting action.
+    this.$store.dispatch('recomendation/getQuestions')
   }
 }
 </script>

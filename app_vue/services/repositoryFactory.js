@@ -9,5 +9,6 @@ const repositories = {
 }
 
 export const RepositoryFactory = {
-  get: name => repositories[name]
+  /* eslint arrow-parens: ["error", "always"] */
+  get: (name) => repositories[name]
 }
