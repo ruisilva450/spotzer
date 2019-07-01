@@ -5,7 +5,7 @@
         <div class="columns is-vcentered">
           <div class="column is-one-quarter">
             <div class="title has-text-grey-dark">
-              Company X
+              Spotzer X
             </div>
           </div>
           <div class="column">
