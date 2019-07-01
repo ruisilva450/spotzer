@@ -1,4 +1,8 @@
 // db.js
+
+// Load Chance
+var Chance = require('chance');
+
 module.exports = () => {
     const data = {
         questions: [
@@ -60,9 +64,22 @@ module.exports = () => {
         vehicles: []
     };
 
-    // Create 1000 users
+    // Instantiate Chance so it can be used
+    var chance = new Chance();
+    var my_random_string = chance.string();
+
+    let typeN = chance.integer({ min: 1, max: 2 });
+
+    // Create 500 vehicles
     for (let i = 0; i < 500; i++) {
-        data.vehicles.push({ id: i, name: `user${i}` })
+        const carType = chance.integer({ min: 1, max: 2 })
+        data.vehicles.push({
+            id: i,
+            image: 'https://loremflickr.com/320/240/' + (carType == 1 ? 'suv,familycar' : 'sportcar' + '?random=1'),
+            type: carType,
+            year: chance.integer({ min: new Date(0).getFullYear(), max: new Date().getFullYear() }),
+            mileage: chance.integer({ min: 1, max: 250000 })
+        })
     }
     return data
 }

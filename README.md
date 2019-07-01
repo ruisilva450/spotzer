@@ -33,8 +33,11 @@ $ npm install -g json-server
 # open data folder
 $ cd data
 
+# install dependencies
+$ yarn install
+
 # build and start db server
-$ json-server db.js
+$ json-server db.js -p 3001
 ```
 For detailed explanation on how things work, checkout [JSON Server](https://github.com/typicode/json-server).
 

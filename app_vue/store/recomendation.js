@@ -19,9 +19,8 @@ export const actions = {
     )
   },
   getVehicles({ commit }, type) {
-    debugger
     /* eslint arrow-parens: ["error", "always"] */
-    VehiclesRepository.get(type).then((vehicles) =>
+    VehiclesRepository.getType(type).then((vehicles) =>
       commit('updateVehicles', vehicles.data)
     )
   }
@@ -32,7 +31,6 @@ export const mutations = {
     state.questions = payload
   },
   updateVehicles(state, payload) {
-    debugger
     state.vehicles = payload
   },
   answer(state, { question, value }) {
